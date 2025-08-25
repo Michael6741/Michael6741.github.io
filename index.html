@@ -1,524 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Full-Stack Engineer</title>
-  <meta name="description" content="Portfolio of Your Name — Full-Stack Web Engineer." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Engineering Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">
-        <span class="logo" aria-hidden="true">◆</span>
-        <span class="brand-text">Your Name</span>
-      </a>
-      <nav class="site-nav" aria-label="Primary">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">Your<span>Portfolio</span></a>
+      <nav class="nav">
         <ul>
+          <li><a href="#senior-design">Senior Design</a></li>
+          <li><a href="#mini-projects">Mini Projects</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a class="btn btn-small" href="#contact">Contact</a></li>
+          <li><a href="#contact" class="btn-nav">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="section hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="eyebrow">Full-Stack Web Engineer</p>
-          <h1>Building fast, elegant, user-first web apps.</h1>
-          <p class="lede">
-            I design and ship production-ready experiences across the stack — from accessible, responsive UIs to scalable backend services.
-          </p>
-          <div class="hero-cta">
-            <a class="btn" href="#projects">View Projects</a>
-            <a class="btn btn-ghost" href="#contact">Get in Touch</a>
-          </div>
-          <ul class="quick-stats" role="list">
-            <li><strong>7+</strong><span>years experience</span></li>
-            <li><strong>30+</strong><span>projects shipped</span></li>
-            <li><strong>200ms</strong><span>p95 LCP target</span></li>
-          </ul>
-        </div>
-        <div class="hero-card" aria-hidden="true">
-          <!-- Decorative SVG grid/avatar -->
-          <div class="avatar">
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
-              <defs>
-                <linearGradient id="g" x1="0" x2="1">
-                  <stop offset="0" stop-color="var(--accent-400)"/>
-                  <stop offset="1" stop-color="var(--accent-600)"/>
-                </linearGradient>
-              </defs>
-              <circle cx="60" cy="60" r="56" fill="url(#g)"/>
-              <circle cx="60" cy="50" r="18" fill="white" opacity="0.9"/>
-              <rect x="30" y="74" width="60" height="30" rx="15" fill="white" opacity="0.9"/>
-            </svg>
-          </div>
-          <div class="hero-badge">Open to Work</div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Hi, I'm <span>Your Name</span></h1>
+        <p>Engineer & Full-Stack Developer creating impactful designs, scalable applications, and innovative hardware solutions.</p>
+        <a href="#senior-design" class="btn-primary">View My Work</a>
+      </div>
+      <div class="hero-image-container">
+        <img src="images/profile.jpg" alt="Profile Picture" class="hero-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- SENIOR DESIGN PROJECT -->
+  <section id="senior-design" class="section">
+    <div class="container">
+      <h2 class="section-title">Senior Design Project</h2>
+      <p class="section-subtitle">Explore my capstone project phases and deliverables</p>
+      <div class="design-grid">
+        <article class="design-item" id="problem-statement">
+          <h3>Problem Statement</h3>
+          <p>Explain the challenge, its context, and why solving it matters.</p>
+        </article>
+        <article class="design-item" id="preliminary-design-review">
+          <h3>Preliminary Design Review</h3>
+          <p>Include diagrams, prototypes, and initial considerations.</p>
+        </article>
+        <article class="design-item" id="critical-design-review">
+          <h3>Critical Design Review</h3>
+          <p>Highlight design refinements, decisions, and testing data.</p>
+        </article>
+        <article class="design-item" id="final-presentation">
+          <h3>Final Presentation</h3>
+          <p>Summarize the outcomes and key results of the project.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI FABRICATION PROJECTS -->
+  <section id="mini-projects" class="section alt-bg">
+    <div class="container">
+      <h2 class="section-title">Mini Fabrication Projects</h2>
+      <p class="section-subtitle">Hands-on engineering work across various domains</p>
+      <div class="projects-grid">
+        <div class="project-card"><h3>Computer Controlled Cutting</h3><p>Laser cutting designs and material optimization.</p></div>
+        <div class="project-card"><h3>Embedded Programming</h3><p>Microcontroller coding and device integration.</p></div>
+        <div class="project-card"><h3>3D Scanning</h3><p>High-resolution scanning for reverse engineering.</p></div>
+        <div class="project-card"><h3>Computer-Controlled Machining</h3><p>Precision CNC machining for custom components.</p></div>
+        <div class="project-card"><h3>Electronics Production</h3><p>PCB design and circuit assembly for IoT devices.</p></div>
+        <div class="project-card"><h3>Molding and Casting</h3><p>Prototyping functional parts with casting methods.</p></div>
+        <div class="project-card"><h3>Wildcard</h3><p>Innovative exploration using hybrid fabrication.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about" class="section">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2 class="section-title">About Me</h2>
+        <p>I am passionate about blending mechanical engineering with software development. Experienced in CAD, embedded systems, and full-stack web applications.</p>
+        <div class="skills">
+          <span class="skill-badge">Full-Stack Dev</span>
+          <span class="skill-badge">CAD Design</span>
+          <span class="skill-badge">Fabrication</span>
         </div>
       </div>
-    </section>
+      <div class="about-image">
+        <img src="images/about.jpg" alt="About Me" />
+      </div>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container grid-2">
-        <div>
-          <h2>About</h2>
-          <p>
-            I’m a builder who loves clean architecture, well-crafted UI, and measurable impact.
-            My sweet spot is taking an idea from Figma to prod with strong CI/CD, observability, and performance budgets.
-          </p>
-          <p>
-            I care about accessibility (WCAG 2.2), Core Web Vitals, and maintainable code that future-you will thank you for.
-          </p>
-          <div class="badges">
-            <span class="badge">Performance</span>
-            <span class="badge">Accessibility</span>
-            <span class="badge">DX & Tooling</span>
-          </div>
-        </div>
-        <ul class="highlights" role="list">
-          <li>
-            <h3>Lead & Deliver</h3>
-            <p>Own features end-to-end: scope, build, test, monitor, iterate.</p>
-          </li>
-          <li>
-            <h3>Modern Stack</h3>
-            <p>TypeScript, Node, Python, SQL/NoSQL, REST/GraphQL, Docker.</p>
-          </li>
-          <li>
-            <h3>Cloud-Native</h3>
-            <p>AWS/GCP, CI/CD, IaC, serverless, containers, and cost-aware design.</p>
-          </li>
+  <!-- CONTACT -->
+  <section id="contact" class="section alt-bg">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">Get In Touch</h2>
+        <p>If you’d like to collaborate or have any questions, feel free to reach out!</p>
+        <ul class="contact-info">
+          <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
+          <li>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></li>
+          <li>GitHub: <a href="#">github.com/yourhandle</a></li>
         </ul>
       </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section section-alt">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="tags">
-          <span>HTML</span><span>CSS</span><span>Sass</span><span>Tailwind</span>
-          <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span>
-          <span>Node.js</span><span>Express</span><span>Python</span><span>FastAPI</span>
-          <span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Prisma</span>
-          <span>Docker</span><span>CI/CD</span><span>AWS</span><span>GCP</span>
-          <span>Testing</span><span>Playwright</span><span>Vitest/Jest</span><span>GraphQL</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Projects</h2>
-          <p class="muted">A few things I’ve shipped recently.</p>
-        </div>
-
-        <div class="grid-3 cards">
-          <!-- Project Card -->
-          <article class="card">
-            <div class="card-media">
-              <img src="https://picsum.photos/seed/app1/640/400" alt="Screenshot of Analytics Dashboard project" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>Analytics Dashboard</h3>
-              <p>
-                Real-time metrics with streaming APIs, role-based access, and <em>sub-200ms</em> interactions.
-              </p>
-              <ul class="pill-list" role="list">
-                <li>TypeScript</li><li>React</li><li>Node</li><li>Postgres</li>
-              </ul>
-              <div class="card-actions">
-                <a class="btn btn-ghost" href="#" aria-label="View live demo of Analytics Dashboard">Live</a>
-                <a class="btn" href="#" aria-label="View source code of Analytics Dashboard">Code</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <img src="https://picsum.photos/seed/app2/640/400" alt="Screenshot of E-commerce platform project" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>E-commerce Platform</h3>
-              <p>
-                Headless storefront with server-side rendering, edge caching, and payments.
-              </p>
-              <ul class="pill-list" role="list">
-                <li>Next.js</li><li>Prisma</li><li>Stripe</li><li>Redis</li>
-              </ul>
-              <div class="card-actions">
-                <a class="btn btn-ghost" href="#">Live</a>
-                <a class="btn" href="#">Code</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <img src="https://picsum.photos/seed/app3/640/400" alt="Screenshot of Collaboration suite project" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>Collaboration Suite</h3>
-              <p>
-                Multi-tenant realtime docs with CRDTs and optimistic UI.
-              </p>
-              <ul class="pill-list" role="list">
-                <li>React</li><li>WebSockets</li><li>Go</li><li>GCP</li>
-              </ul>
-              <div class="card-actions">
-                <a class="btn btn-ghost" href="#">Live</a>
-                <a class="btn" href="#">Code</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section section-alt">
-      <div class="container">
-        <h2>Experience</h2>
-        <ol class="timeline">
-          <li>
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-content">
-              <h3>Senior Full-Stack Engineer — Acme Inc.</h3>
-              <p class="muted">2022 — Present</p>
-              <p>Led migration to micro-frontends, improved p95 LCP by 37%, and reduced infra spend by 18%.</p>
-            </div>
-          </li>
-          <li>
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-content">
-              <h3>Full-Stack Engineer — Startup XYZ</h3>
-              <p class="muted">2019 — 2022</p>
-              <p>Shipped core features across auth, billing, and onboarding. Built robust testing pipeline.</p>
-            </div>
-          </li>
-          <li>
-            <div class="tl-dot" aria-hidden="true"></div>
-            <div class="tl-content">
-              <h3>Frontend Engineer — Agency ABC</h3>
-              <p class="muted">2017 — 2019</p>
-              <p>Delivered accessible, performant sites for Fortune 500 clients.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container grid-2">
-        <div>
-          <h2>Contact</h2>
-          <p>Want to collaborate or say hi? I’d love to hear from you.</p>
-          <ul class="contact-list" role="list">
-            <li><strong>Email:</strong> <a href="mailto:you@example.com">you@example.com</a></li>
-            <li><strong>LinkedIn:</strong> <a href="#" rel="noopener">/in/your-handle</a></li>
-            <li><strong>GitHub:</strong> <a href="#" rel="noopener">@your-handle</a></li>
-          </ul>
-        </div>
-        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required />
-          </label>
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-          <button class="btn" type="submit">Send Message</button>
-          <p class="tiny muted">This form uses Formspree. Replace the action URL with your own or mailto: link.</p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Your Name. All rights reserved.</p>
-      <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
     </div>
-    <!-- Tiny inline script to set the year; remove if you want strictly no JS -->
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="year"></span> Your Name. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-styles.css
-css
-Copy
-Edit
-/* ====== Design Tokens ====== */
-:root {
-  --bg: #0b0d10;
-  --bg-elev: #12151a;
-  --text: #e8ecf1;
-  --muted: #a6b0bf;
-  --border: #1e232b;
-  --accent-400: #5dd3ff;
-  --accent-500: #3abef0;
-  --accent-600: #1aa0d6;
-  --success: #22c55e;
-
-  --radius: 16px;
-  --radius-lg: 20px;
-  --shadow: 0 8px 24px rgba(0,0,0,.25), 0 2px 6px rgba(0,0,0,.2);
-
-  --max-w: 1100px;
-
-  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --speed: 160ms;
-}
-
-/* Light mode */
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #ffffff;
-    --bg-elev: #f6f7f9;
-    --text: #0f172a;
-    --muted: #475569;
-    --border: #e5e7eb;
-    --accent-400: #5dd3ff;
-    --accent-500: #3abef0;
-    --accent-600: #0ea5e9;
-    --shadow: 0 10px 24px rgba(2,6,23,.08), 0 2px 6px rgba(2,6,23,.06);
-  }
-}
-
-/* ====== Base ====== */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: radial-gradient(1200px 800px at 80% -10%, rgba(58,190,240,0.12), transparent 60%), var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-img, svg { display: block; max-width: 100%; height: auto; }
-
-.container {
-  width: min(100% - 2rem, var(--max-w));
-  margin-inline: auto;
-}
-
-.section { padding: 4rem 0; }
-.section-alt { background: var(--bg-elev); }
-.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-
-h1, h2, h3 {
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.75rem 0;
-}
-h1 { font-size: clamp(2rem, 3vw + 1.2rem, 3.25rem); }
-h2 { font-size: clamp(1.5rem, 1.5vw + 1rem, 2.1rem); }
-h3 { font-size: clamp(1.05rem, 0.9vw + .8rem, 1.25rem); }
-
-p { margin: 0 0 1rem 0; }
-.lede { font-size: clamp(1rem, 0.8vw + .9rem, 1.25rem); color: var(--muted); max-width: 60ch; }
-.muted { color: var(--muted); }
-.tiny { font-size: 0.85rem; }
-.eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; color: var(--accent-500); }
-
-/* ====== Header / Nav ====== */
-.site-header {
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: saturate(120%) blur(8px);
-  background: color-mix(in oklab, var(--bg) 82%, transparent);
-  border-bottom: 1px solid var(--border);
-}
-.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
-
-.brand { display: inline-flex; gap: .6rem; align-items: center; color: var(--text); text-decoration: none; font-weight: 700; }
-.logo {
-  width: 20px; height: 20px; display: grid; place-items: center; border-radius: 6px;
-  background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
-  box-shadow: 0 4px 10px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.2);
-}
-.brand-text { letter-spacing: .02em; }
-
-.site-nav ul { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; }
-.site-nav a { color: var(--text); text-decoration: none; padding: .5rem .75rem; border-radius: 12px; }
-.site-nav a:hover { background: color-mix(in oklab, var(--bg-elev) 80%, transparent); }
-
-/* ====== Hero ====== */
-.hero { padding-top: 6rem; padding-bottom: 3rem; }
-.hero-inner { display: grid; gap: 2rem; align-items: center; }
-@media (min-width: 900px) {
-  .hero-inner { grid-template-columns: 1.2fr .8fr; }
-}
-.hero-text .hero-cta { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
-
-.quick-stats { display: flex; gap: 1.25rem; margin-top: 1.25rem; padding: 0; list-style: none; }
-.quick-stats li { display: grid; gap: .25rem; }
-.quick-stats strong { font-size: 1.25rem; }
-
-.hero-card {
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-elev) 90%, transparent), var(--bg));
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  padding: 1.25rem;
-  position: relative;
-  overflow: clip;
-}
-.hero-badge {
-  position: absolute; top: 12px; right: 12px;
-  background: color-mix(in oklab, var(--accent-500) 25%, transparent);
-  border: 1px solid color-mix(in oklab, var(--accent-600) 60%, var(--border));
-  color: var(--text); font-weight: 600; font-size: .8rem;
-  padding: .4rem .6rem; border-radius: 999px;
-}
-.avatar { aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; }
-
-/* ====== Buttons & Badges ====== */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  gap: .5rem; padding: .7rem 1rem; border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
-  color: white; text-decoration: none; border: 0; cursor: pointer; font-weight: 700;
-  transition: transform var(--speed) ease, box-shadow var(--speed) ease, opacity var(--speed) ease;
-  box-shadow: 0 8px 18px rgba(26,160,214,.25);
-}
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0px) scale(.99); }
-.btn-ghost {
-  background: transparent; color: var(--text); border: 1px solid var(--border);
-  box-shadow: none;
-}
-.btn-small { padding: .5rem .8rem; font-weight: 600; }
-
-/* ====== Layout Grids ====== */
-.grid-2 { display: grid; gap: 2rem; }
-.grid-3 { display: grid; gap: 1.25rem; }
-@media (min-width: 800px) {
-  .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-@media (min-width: 900px) {
-  .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-}
-
-/* ====== Highlights ====== */
-.highlights { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
-.highlights li {
-  padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius);
-  background: color-mix(in oklab, var(--bg-elev) 60%, transparent);
-}
-.badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
-.badge {
-  display: inline-block; padding: .35rem .6rem; border-radius: 999px;
-  background: color-mix(in oklab, var(--accent-500) 18%, transparent);
-  border: 1px solid color-mix(in oklab, var(--accent-600), var(--border));
-  font-size: .8rem; font-weight: 600;
-}
-
-/* ====== Skills Tags ====== */
-.tags { display: flex; flex-wrap: wrap; gap: .6rem; }
-.tags span {
-  border: 1px solid var(--border); padding: .5rem .7rem; border-radius: 999px;
-  background: color-mix(in oklab, var(--bg-elev) 70%, transparent);
-  font-size: .9rem;
-}
-
-/* ====== Cards / Projects ====== */
-.cards { margin-top: 1rem; }
-.card {
-  display: grid; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-elev) 85%, transparent), var(--bg));
-  transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
-}
-.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: color-mix(in oklab, var(--accent-600) 35%, var(--border)); }
-.card-media { aspect-ratio: 16 / 10; overflow: hidden; }
-.card-media img { width: 100%; height: 100%; object-fit: cover; }
-.card-body { padding: 1rem; display: grid; gap: .5rem; }
-.pill-list { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: .25rem 0 .5rem; }
-.pill-list li {
-  font-size: .8rem; padding: .35rem .55rem; border-radius: 999px;
-  border: 1px solid var(--border);
-}
-.card-actions { display: flex; gap: .5rem; }
-
-/* ====== Timeline ====== */
-.timeline {
-  list-style: none; margin: 1rem 0 0 0; padding: 0; position: relative;
-  border-left: 2px dashed color-mix(in oklab, var(--accent-600) 45%, var(--border));
-}
-.timeline li { position: relative; padding-left: 1.25rem; margin: 1rem 0; }
-.tl-dot {
-  position: absolute; left: -7px; top: .55rem; width: 12px; height: 12px; border-radius: 999px;
-  background: var(--accent-600); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-500) 25%, transparent);
-}
-.tl-content h3 { margin-bottom: .25rem; }
-
-/* ====== Contact ====== */
-.contact-list { list-style: none; padding: 0; margin: .5rem 0 0 0; display: grid; gap: .35rem; }
-.contact-form {
-  display: grid; gap: .75rem; border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 1rem; background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
-}
-.contact-form label { display: grid; gap: .35rem; font-weight: 600; }
-input, textarea {
-  width: 100%; border: 1px solid var(--border); background: var(--bg); color: var(--text);
-  padding: .7rem .8rem; border-radius: 12px; font: inherit;
-}
-input:focus, textarea:focus { outline: 2px solid color-mix(in oklab, var(--accent-500) 40%, transparent); outline-offset: 2px; }
-
-/* ====== Footer ====== */
-.site-footer { border-top: 1px solid var(--border); margin-top: 2rem; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; }
-.back-to-top {
-  text-decoration: none; padding: .5rem .7rem; border-radius: 10px; border: 1px solid var(--border);
-  color: var(--text);
-}
-.back-to-top:hover { background: color-mix(in oklab, var(--bg-elev) 80%, transparent); }
-
-/* ====== A11y ====== */
-.skip-link {
-  position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden;
-}
-.skip-link:focus {
-  position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; padding: .5rem .75rem;
-  background: var(--bg-elev); color: var(--text); border: 1px solid var(--border); border-radius: 10px;
-}
-
-/* ====== Utilities ====== */
-.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-Want me to tailor this with your actual name, links, and real project screenshots? I can also add a blog section, dark/light toggle (without JS), or a printable résumé page.
-
-
-
-
-
-
-
-
-Ask ChatGPT
