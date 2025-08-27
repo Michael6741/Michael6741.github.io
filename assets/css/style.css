@@ -1,0 +1,467 @@
+:root {
+  --bg: #f7f9fb;
+  --bg-elev: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --brand: #00b894;
+  --brand-strong: #00a383;
+  --accent: #5b7cfa;
+  --accent-2: #ff7a59;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  --radius: 16px;
+  --focus: 2px solid #5b7cfa;
+  --link: #0ea5e9;
+  --chip: #eef2ff;
+  --chip-text: #3730a3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --bg-elev: #0f172a;
+    --text: #e5e7eb;
+    --muted: #a1a1aa;
+    --brand: #2bd4bd;
+    --brand-strong: #22b6a3;
+    --accent: #9bb0ff;
+    --accent-2: #ff9e82;
+    --card: #0f172a;
+    --border: #1f2937;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --link: #7dd3fc;
+    --chip: #1e293b;
+    --chip-text: #c7d2fe;
+  }
+}
+
+/* Manual override via data-theme */
+body[data-theme="dark"] {
+  --bg: #0b1220;
+  --bg-elev: #0f172a;
+  --text: #e5e7eb;
+  --muted: #a1a1aa;
+  --brand: #2bd4bd;
+  --brand-strong: #22b6a3;
+  --accent: #9bb0ff;
+  --accent-2: #ff9e82;
+  --card: #0f172a;
+  --border: #1f2937;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --link: #7dd3fc;
+  --chip: #1e293b;
+  --chip-text: #c7d2fe;
+}
+
+body[data-theme="light"] {
+  --bg: #f7f9fb;
+  --bg-elev: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --brand: #00b894;
+  --brand-strong: #00a383;
+  --accent: #5b7cfa;
+  --accent-2: #ff7a59;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  --link: #0ea5e9;
+  --chip: #eef2ff;
+  --chip-text: #3730a3;
+}
+
+/* 02) Reset / Base --------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(91,124,250,0.12), transparent 60%),
+    radial-gradient(1000px 700px at 10% -5%, rgba(0,184,148,0.12), transparent 60%),
+    var(--bg);
+  line-height: 1.6;
+}
+
+::selection { background: rgba(91,124,250,0.3); }
+:focus-visible { outline: var(--focus); outline-offset: 3px; }
+
+/* 03) Utilities ------------------------------------------------------------ */
+.container { width: min(1120px, 92vw); margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: 0; top: 0; transform: translateY(-120%);
+  transition: transform .2s ease; background: var(--accent); color: white; padding: .5rem .75rem; z-index: 1000;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* 04) Header & Nav --------------------------------------------------------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg-elev), transparent 8%);
+  backdrop-filter: saturate(1.1) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
+
+.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
+.brand-text { font-weight: 700; color: var(--text); letter-spacing: .2px; }
+.brand-mark { width: 32px; height: 32px; }
+.brand-circle { fill: var(--brand); }
+.brand-glyph { fill: white; }
+
+.site-nav { display: flex; }
+.nav-list { display: flex; gap: .25rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+
+.nav-link,
+.sub-trigger {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .55rem .8rem; border-radius: 999px; border: 1px solid transparent;
+  background: transparent; color: var(--text); text-decoration: none; font-weight: 600;
+}
+
+.nav-link:hover,
+.sub-trigger:hover { background: color-mix(in srgb, var(--brand), transparent 85%); }
+.nav-link:focus-visible,
+.sub-trigger:focus-visible { outline-offset: 2px; }
+
+.has-sub { position: relative; }
+
+/* Submenu base (hidden by default) */
+.sub-menu {
+  position: absolute; top: calc(100% + .5rem); left: 0;
+  display: grid; gap: .25rem; min-width: 260px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 14px; padding: .5rem; box-shadow: var(--shadow);
+  opacity: 0; visibility: hidden; translate: 0 -6px; transition: .2s ease;
+  pointer-events: none; /* avoid trapping clicks when closed */
+}
+
+/* Visible states: either class .open or when button has aria-expanded="true" */
+.sub-menu.open,
+.sub-trigger[aria-expanded="true"] + .sub-menu {
+  opacity: 1; visibility: visible; translate: 0 0;
+  pointer-events: auto;
+}
+
+/* Submenu links */
+.sub-menu a {
+  display: block; padding: .5rem .6rem; border-radius: 10px; text-decoration: none; color: var(--text);
+}
+.sub-menu a:hover { background: color-mix(in srgb, var(--accent), transparent 86%); }
+
+.nav-toggle {
+  display: none; border: 1px solid var(--border); background: var(--bg-elev);
+  color: var(--text); padding: .5rem; border-radius: 12px;
+}
+.nav-toggle .bar { display: block; width: 22px; height: 2px; background: currentColor; margin: 4px 2px; }
+
+/* 05) Buttons --------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem; padding: .7rem 1rem; border-radius: 12px;
+  border: 1px solid var(--border); text-decoration: none; cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+  transition: transform .06s ease, background .2s ease, border-color .2s ease;
+  will-change: transform;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--brand); color: #fff; border-color: color-mix(in srgb, var(--brand), black 8%); }
+.btn-primary:hover { background: var(--brand-strong); }
+.btn-outline { background: var(--bg-elev); color: var(--text); }
+.btn-ghost { background: transparent; color: var(--text); border-color: transparent; }
+
+/* 06) Hero ------------------------------------------------------------------ */
+.hero { padding: clamp(2rem, 4vw + 2rem, 6rem) 0; }
+.hero-inner { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: center; }
+.hero-copy { grid-column: span 7; }
+.hero-media { grid-column: span 5; }
+
+.hero-title { font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem); line-height: 1.1; margin: 0 0 .6rem; }
+.hero-subtitle { font-size: clamp(1rem, .95rem + .4vw, 1.15rem); color: var(--muted); margin: 0 0 1.2rem; }
+.hero-cta { display: flex; gap: .75rem; margin-bottom: 1rem; }
+
+.hero-highlights { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .5rem; }
+.portrait {
+  margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--bg-elev);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.portrait img { display: block; width: 100%; height: auto; transition: transform .35s ease; }
+.portrait:hover img { transform: scale(1.025); }
+.portrait figcaption { padding: .75rem; color: var(--muted); }
+
+/* 07) Sections -------------------------------------------------------------- */
+.section { padding: clamp(2.5rem, 2rem + 3vw, 5rem) 0; }
+.section-header { margin-bottom: 1.5rem; }
+.section-lead { color: var(--muted); margin: .35rem 0 0; }
+
+header.section-header h2::after {
+  content: ""; display: block; width: 56px; height: 3px; border-radius: 999px;
+  margin-top: .35rem; background: linear-gradient(90deg, var(--brand), var(--accent));
+}
+
+/* 08) Project Cards --------------------------------------------------------- */
+.project-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1rem; box-shadow: var(--shadow); margin-bottom: 1.25rem;
+}
+.project-card:hover { outline: 1px solid color-mix(in srgb, var(--brand), transparent 75%); }
+.card-header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.meta { display: inline-flex; gap: .35rem; }
+.tag {
+  background: color-mix(in srgb, var(--accent), transparent 86%);
+  color: color-mix(in srgb, var(--text), white 20%);
+  border: 1px solid var(--border); padding: .25rem .5rem; border-radius: 999px; font-size: .85rem;
+}
+.card-body { margin-top: .75rem; }
+.card-footer { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+
+/* details */
+.details { border: 1px dashed var(--border); border-radius: 12px; padding: .75rem; background: color-mix(in srgb, var(--bg), transparent 0%); }
+.details + .details { margin-top: .6rem; }
+.details summary { cursor: pointer; font-weight: 700; color: var(--text); }
+
+/* 09) Two-column grid ------------------------------------------------------- */
+.grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; align-items: start; }
+
+/* 10) Simple wire figure ---------------------------------------------------- */
+.wire { width: 100%; height: auto; display: block; }
+.wire-box { fill: color-mix(in srgb, var(--accent), transparent 86%); stroke: var(--border); }
+.wire-line { stroke: var(--text); stroke-width: 2; }
+
+/* 11) Video Frame Placeholder ---------------------------------------------- */
+.video-frame {
+  aspect-ratio: 16 / 9; border-radius: 14px; border: 1px dashed var(--border);
+  display: grid; place-items: center; background: color-mix(in srgb, var(--bg), transparent 0%);
+  color: var(--muted); font-weight: 700;
+}
+
+/* 12) Mini Project Grid ----------------------------------------------------- */
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.mini-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem; box-shadow: var(--shadow);
+  display: grid; gap: .65rem; transition: transform .15s ease, box-shadow .2s ease;
+}
+.mini-card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(2,6,23,.12); }
+.mini-link { text-decoration: none; color: var(--link); font-weight: 700; }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; }
+.chips li {
+  font-size: .8rem; padding: .25rem .5rem; border-radius: 999px;
+  background: var(--chip); color: var(--chip-text); border: 1px solid color-mix(in srgb, var(--chip-text), transparent 85%);
+}
+
+/* 13) About Grid ------------------------------------------------------------ */
+.about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.about-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1rem; box-shadow: var(--shadow);
+}
+.skills { padding-left: 1.2rem; }
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+.timeline li { display: grid; grid-template-columns: 120px 1fr; gap: .5rem; align-items: start; }
+.timeline .time { font-weight: 700; color: var(--muted); }
+
+/* 14) Contact Form ---------------------------------------------------------- */
+.contact-form {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1rem; box-shadow: var(--shadow); max-width: 780px;
+}
+.form-row { display: grid; gap: .35rem; margin-bottom: .9rem; }
+label { font-weight: 700; }
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg-elev); color: var(--text);
+  padding: .7rem .85rem; font: inherit;
+}
+input::placeholder, textarea::placeholder { color: color-mix(in srgb, var(--muted), transparent 30%); }
+.form-help { color: var(--muted); margin: .3rem 0 .9rem; }
+.form-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+
+/* 15) Footer ---------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--border); background: color-mix(in srgb, var(--bg-elev), transparent 6%);
+  margin-top: 2rem; position: relative;
+}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; }
+.footer-links { list-style: none; display: flex; gap: .6rem; padding: 0; margin: 0; }
+.footer-links a { text-decoration: none; color: var(--text); padding: .35rem .55rem; border-radius: 999px; }
+.footer-links a:hover { background: color-mix(in srgb, var(--accent), transparent 88%); }
+.back-to-top {
+  position: absolute; right: 1rem; bottom: calc(100% - 14px);
+  background: var(--brand); color: #fff; text-decoration: none; font-weight: 800;
+  padding: .35rem .55rem; border-radius: 10px; transform: translateY(50%);
+}
+
+/* 16) Theme Toggle ---------------------------------------------------------- */
+.theme-toggle {
+  appearance: none; border: 1px solid var(--border); background: var(--bg-elev);
+  padding: .4rem .6rem; border-radius: 10px; cursor: pointer; display: inline-flex; gap: .35rem;
+}
+.icon-sun, .icon-moon { width: 1rem; height: 1rem; display: inline-block; }
+.icon-sun { background: conic-gradient(from 0turn, #fbbf24, #fde68a); border-radius: 50%; }
+.icon-moon {
+  background: radial-gradient(circle at 35% 35%, #fff, #cbd5e1 45%, transparent 46%), #0b1220;
+  border-radius: 50%;
+}
+
+/* 17) Typography ------------------------------------------------------------ */
+h1, h2, h3 { line-height: 1.2; margin: .2rem 0 .4rem; }
+p { margin: .3rem 0 .6rem; }
+ul.bullets { padding-left: 1.2rem; }
+.detail-list { padding-left: 1.2rem; }
+a { color: var(--link); }
+.text-muted { color: var(--muted); }
+
+/* 18) Animations ------------------------------------------------------------ */
+@keyframes floatUp {
+  from { transform: translateY(4px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+[data-animate] { animation: floatUp .4s ease both; }
+
+/* 19) Responsive ------------------------------------------------------------ */
+@media (max-width: 1000px) {
+  .hero-inner { grid-template-columns: repeat(12, 1fr); }
+  .hero-copy { grid-column: span 12; }
+  .hero-media { grid-column: span 12; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-block; }
+  .site-nav { position: absolute; inset: calc(100% + 8px) 0 auto 0; display: none; }
+  .site-nav.open { display: block; }
+  .nav-list {
+    background: var(--bg-elev); border-top: 1px solid var(--border); box-shadow: var(--shadow);
+    padding: .5rem; border-radius: 12px; flex-direction: column; align-items: stretch;
+  }
+  .has-sub .sub-menu { position: static; translate: 0 0; box-shadow: none; border: none; padding: 0; }
+  .sub-menu a { padding-left: 1rem; }
+  .project-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+/* 20) Print Styles ---------------------------------------------------------- */
+@media print {
+  html { scroll-behavior: auto; }
+  body { background: #fff; color: #000; }
+  .site-header, .nav-toggle, .theme-toggle, .back-to-top { display: none !important; }
+  .btn { border: 1px solid #000; color: #000; background: transparent; }
+}
+
+/* 21) Tables (if you add any later) ---------------------------------------- */
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--border); padding: .5rem; }
+th { text-align: left; }
+
+/* 22) Code blocks (if used) ------------------------------------------------- */
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+pre {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  padding: .75rem; border-radius: 12px; overflow: auto;
+}
+
+/* 23) Validation hints ------------------------------------------------------ */
+input:invalid, textarea:invalid { border-color: color-mix(in srgb, red, transparent 60%); }
+input:valid, textarea:valid { border-color: color-mix(in srgb, #22c55e, transparent 60%); }
+
+/* 24) Elevation helpers ----------------------------------------------------- */
+.elev-1 { box-shadow: 0 4px 12px rgba(2,6,23,.05); }
+.elev-2 { box-shadow: 0 10px 30px rgba(2,6,23,.08); }
+.elev-3 { box-shadow: 0 20px 50px rgba(2,6,23,.12); }
+
+/* 25) Spacing helpers ------------------------------------------------------- */
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: .25rem !important; }
+.mt-2 { margin-top: .5rem !important; }
+.mt-3 { margin-top: .75rem !important; }
+.mt-4 { margin-top: 1rem !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: .25rem !important; }
+.mb-2 { margin-bottom: .5rem !important; }
+.mb-3 { margin-bottom: .75rem !important; }
+.mb-4 { margin-bottom: 1rem !important; }
+
+/* 26) Width helpers --------------------------------------------------------- */
+.w-100 { width: 100% !important; }
+.max-600 { max-width: 600px !important; }
+.max-800 { max-width: 800px !important; }
+
+/* 27) Color helpers --------------------------------------------------------- */
+.text-brand { color: var(--brand) !important; }
+.bg-card { background: var(--card) !important; }
+.border { border: 1px solid var(--border) !important; }
+.rounded { border-radius: var(--radius) !important; }
+
+/* 28) Chip styling in hero -------------------------------------------------- */
+ul.hero-highlights li {
+  background: color-mix(in srgb, var(--brand), transparent 88%);
+  border-radius: 10px; padding: .35rem .5rem;
+}
+
+/* 29) Focus outlines and hover states -------------------------------------- */
+a:hover { text-decoration: underline; }
+.mini-card:focus-within,
+.mini-card:focus { outline: var(--focus); }
+
+/* 30) Nice transitions on cards -------------------------------------------- */
+.meta .tag { transition: transform .15s ease; }
+.meta .tag:hover { transform: translateY(-1px); }
+
+/* 31) Submenu arrows (optional) -------------------------------------------- */
+.has-sub .sub-trigger::after {
+  content: ""; width: .5rem; height: .5rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); display: inline-block; margin-left: .35rem; transition: transform .2s ease;
+  opacity: .9;
+}
+.sub-trigger[aria-expanded="true"]::after { transform: rotate(-135deg); }
+
+/* 32) Shadows for elev states (extra) -------------------------------------- */
+.shadow-soft { box-shadow: 0 6px 18px rgba(2,6,23,.06); }
+.shadow-strong { box-shadow: 0 26px 60px rgba(2,6,23,.16); }
+
+/* 33) Forms: subtle hover --------------------------------------------------- */
+input:hover, textarea:hover { border-color: color-mix(in srgb, var(--accent), transparent 60%); }
+
+/* 34) Link buttons consistency --------------------------------------------- */
+.btn a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; }
+
+/* 35) Small helpers --------------------------------------------------------- */
+.hidden { display: none !important; }
+.flex { display: flex !important; }
+.grid { display: grid !important; }
+
+/* 36) Nav compact spacing on mobile ---------------------------------------- */
+@media (max-width: 420px) {
+  .nav-link, .sub-trigger { padding: .5rem .7rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* 37) Backdrop polish for sticky header ------------------------------------ */
+.site-header::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,0));
+}
+
+/* 38) Card content rhythm --------------------------------------------------- */
+.project-card p + ul,
+.project-card p + .bullets { margin-top: .4rem; }
+
+/* 39) Figure tweaks --------------------------------------------------------- */
+.figure { margin: 0; }
+.figure figcaption { font-size: .9rem; color: var(--muted); margin-top: .35rem; }

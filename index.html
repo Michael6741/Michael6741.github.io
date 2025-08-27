@@ -1,130 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Engineering Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container nav-container">
-      <a href="#" class="logo">Your<span>Portfolio</span></a>
-      <nav class="nav">
-        <ul>
-          <li><a href="#senior-design">Senior Design</a></li>
-          <li><a href="#mini-projects">Mini Projects</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact" class="btn-nav">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!--
+    High-End Engineering Portfolio
+    Author: Your Name
+    Notes:
+      - Fully responsive, accessible, and keyboard-friendly
+      - Fabrication submenu now toggles open/closed on repeated clicks
+      - Uses aria-expanded + aria-hidden syncing for a11y
+      - Smooth scrolling, sticky header, dark/light/auto theme toggle
+      - Replace placeholder text and links with your content
+  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Name — Engineering Portfolio</title>
+    <meta name="description" content="Senior engineering portfolio: design project, fabrication projects, about me, contact." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2300b894'/%3E%3Cpath d='M22 60 L50 20 L78 60 L50 80 Z' fill='white'/%3E%3C/svg%3E" />
+    <meta property="og:title" content="Your Name — Engineering Portfolio" />
+    <meta property="og:description" content="Senior Design Project, Mini Fabrication Projects, About, Contact." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="" />
+  </head>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Hi, I'm <span>Your Name</span></h1>
-        <p>Engineer & Full-Stack Developer creating impactful designs, scalable applications, and innovative hardware solutions.</p>
-        <a href="#senior-design" class="btn-primary">View My Work</a>
-      </div>
-      <div class="hero-image-container">
-        <img src="images/profile.jpg" alt="Profile Picture" class="hero-image">
-      </div>
-    </div>
-  </section>
+  <body data-theme="auto">
+    <!-- ================================================================== -->
+    <!-- Skip link for keyboard users                                       -->
+    <!-- ================================================================== -->
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- SENIOR DESIGN PROJECT -->
-  <section id="senior-design" class="section">
-    <div class="container">
-      <h2 class="section-title">Senior Design Project</h2>
-      <p class="section-subtitle">Explore my capstone project phases and deliverables</p>
-      <div class="design-grid">
-        <article class="design-item" id="problem-statement">
-          <h3>Problem Statement</h3>
-          <p>Explain the challenge, its context, and why solving it matters.</p>
-        </article>
-        <article class="design-item" id="preliminary-design-review">
-          <h3>Preliminary Design Review</h3>
-          <p>Include diagrams, prototypes, and initial considerations.</p>
-        </article>
-        <article class="design-item" id="critical-design-review">
-          <h3>Critical Design Review</h3>
-          <p>Highlight design refinements, decisions, and testing data.</p>
-        </article>
-        <article class="design-item" id="final-presentation">
-          <h3>Final Presentation</h3>
-          <p>Summarize the outcomes and key results of the project.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+    <!-- ================================================================== -->
+    <!-- Header / Navigation                                                -->
+    <!-- ================================================================== -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="Home">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle cx="32" cy="32" r="30" class="brand-circle"></circle>
+            <path d="M18 42 L32 18 L46 42 L32 50 Z" class="brand-glyph"></path>
+          </svg>
+          <span class="brand-text">Your Name</span>
+        </a>
 
-  <!-- MINI FABRICATION PROJECTS -->
-  <section id="mini-projects" class="section alt-bg">
-    <div class="container">
-      <h2 class="section-title">Mini Fabrication Projects</h2>
-      <p class="section-subtitle">Hands-on engineering work across various domains</p>
-      <div class="projects-grid">
-        <div class="project-card"><h3>Computer Controlled Cutting</h3><p>Laser cutting designs and material optimization.</p></div>
-        <div class="project-card"><h3>Embedded Programming</h3><p>Microcontroller coding and device integration.</p></div>
-        <div class="project-card"><h3>3D Scanning</h3><p>High-resolution scanning for reverse engineering.</p></div>
-        <div class="project-card"><h3>Computer-Controlled Machining</h3><p>Precision CNC machining for custom components.</p></div>
-        <div class="project-card"><h3>Electronics Production</h3><p>PCB design and circuit assembly for IoT devices.</p></div>
-        <div class="project-card"><h3>Molding and Casting</h3><p>Prototyping functional parts with casting methods.</p></div>
-        <div class="project-card"><h3>Wildcard</h3><p>Innovative exploration using hybrid fabrication.</p></div>
-      </div>
-    </div>
-  </section>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
 
-  <!-- ABOUT ME -->
-  <section id="about" class="section">
-    <div class="container about-grid">
-      <div class="about-text">
-        <h2 class="section-title">About Me</h2>
-        <p>I am passionate about blending mechanical engineering with software development. Experienced in CAD, embedded systems, and full-stack web applications.</p>
-        <div class="skills">
-          <span class="skill-badge">Full-Stack Dev</span>
-          <span class="skill-badge">CAD Design</span>
-          <span class="skill-badge">Fabrication</span>
+        <nav class="site-nav" id="siteNav" role="navigation" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="#senior-project">Senior Design</a></li>
+
+            <!-- Submenu group -->
+            <li class="has-sub">
+              <button class="nav-link sub-trigger" aria-expanded="false" aria-controls="subFab">Fabrication</button>
+              <ul id="subFab" class="sub-menu" aria-label="Mini Fabrication Projects" aria-hidden="true">
+                <li><a href="#fab-cutting">Computer Controlled Cutting</a></li>
+                <li><a href="#fab-embedded">Embedded Programming</a></li>
+                <li><a href="#fab-scanning">3D Scanning</a></li>
+                <li><a href="#fab-machining">Computer-Controlled Machining</a></li>
+                <li><a href="#fab-electronics">Electronics Production</a></li>
+                <li><a href="#fab-molding">Molding &amp; Casting</a></li>
+                <li><a href="#fab-wildcard">Wildcard</a></li>
+              </ul>
+            </li>
+
+            <li><a class="nav-link" href="#about">About</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+            <li>
+              <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle light/dark">
+                <span class="icon-sun" aria-hidden="true"></span>
+                <span class="icon-moon" aria-hidden="true"></span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ================================================================== -->
+    <!-- Hero / Intro                                                       -->
+    <!-- ================================================================== -->
+    <section id="home" class="hero" aria-label="Introduction">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 class="hero-title">Building robust systems that ship.</h1>
+          <p class="hero-subtitle">
+            Mechanical &amp; embedded engineer specializing in rapid prototyping,
+            controls, and design for manufacturability.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#senior-project">View Senior Project</a>
+            <a class="btn btn-ghost" href="#contact">Work with me</a>
+          </div>
+          <ul class="hero-highlights" role="list">
+            <li><strong>Focus:</strong> Mechatronics, CAD/CAM, PCB design</li>
+            <li><strong>Tooling:</strong> SolidWorks, Fusion 360, KiCad, MATLAB, Python, C/C++</li>
+            <li><strong>Values:</strong> reliability, clarity, iteration speed</li>
+          </ul>
+        </div>
+        <div class="hero-media">
+          <figure class="portrait">
+            <img src="assets/img/profile.jpg" alt="Portrait of Your Name" />
+            <figcaption>Hi — I’m an engineer who ships.</figcaption>
+          </figure>
         </div>
       </div>
-      <div class="about-image">
-        <img src="images/about.jpg" alt="About Me" />
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- Main content                                                       -->
+    <!-- ================================================================== -->
+    <main id="main" tabindex="-1">
+      <!-- ================================================================ -->
+      <!-- Senior Design Project                                            -->
+      <!-- ================================================================ -->
+      <section id="senior-project" class="section" aria-labelledby="senior-project-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="senior-project-title">Senior Design Project</h2>
+            <p class="section-lead">A capstone demonstrating full-stack hardware development from concept to validated prototype.</p>
+          </header>
+
+          <!-- Problem Statement -->
+          <article class="project-card" id="problem-statement" aria-labelledby="problem-title">
+            <header class="card-header">
+              <h3 id="problem-title">Problem Statement</h3>
+              <div class="meta">
+                <span class="tag">Scope</span>
+                <span class="tag">Requirements</span>
+                <span class="tag">Constraints</span>
+              </div>
+            </header>
+            <div class="card-body">
+              <p>
+                <!-- TODO: Replace with your real text -->
+                The system must <em>reliably</em> perform X under constraints Y and Z. Stakeholders require
+                measurable improvements in A (≥ 20%) while maintaining B and C within defined limits.
+              </p>
+              <ul class="detail-list">
+                <li><strong>Users:</strong> …</li>
+                <li><strong>Environment:</strong> …</li>
+                <li><strong>Key metrics:</strong> latency, power draw, unit cost, MTBF</li>
+              </ul>
+            </div>
+            <footer class="card-footer">
+              <a class="btn btn-outline" href="#" aria-label="Download Problem Statement PDF">Download PDF</a>
+            </footer>
+          </article>
+
+          <!-- PDR -->
+          <article class="project-card" id="pdr" aria-labelledby="pdr-title">
+            <header class="card-header">
+              <h3 id="pdr-title">Preliminary Design Review (PDR)</h3>
+              <div class="meta">
+                <span class="tag">Architecture</span>
+                <span class="tag">Trade Study</span>
+                <span class="tag">Risk</span>
+              </div>
+            </header>
+            <div class="card-body grid-2">
+              <div>
+                <p>
+                  <!-- TODO: Replace -->
+                  Architecture options were evaluated via weighted decision matrix. PDR selected a modular
+                  approach enabling parallel development and risk isolation.
+                </p>
+                <ul class="bullets">
+                  <li>Block diagrams &amp; interfaces</li>
+                  <li>Component selection rationale</li>
+                  <li>Risk register v1</li>
+                </ul>
+              </div>
+              <aside class="artifact">
+                <figure class="figure">
+                  <svg viewBox="0 0 240 140" class="wire" role="img" aria-label="Simplified system block diagram">
+                    <rect x="10" y="20" width="60" height="30" rx="6" class="wire-box"></rect>
+                    <rect x="90" y="20" width="60" height="30" rx="6" class="wire-box"></rect>
+                    <rect x="170" y="20" width="60" height="30" rx="6" class="wire-box"></rect>
+                    <rect x="50" y="80" width="140" height="40" rx="6" class="wire-box"></rect>
+                    <line x1="70" y1="35" x2="90" y2="35" class="wire-line"></line>
+                    <line x1="150" y1="35" x2="170" y2="35" class="wire-line"></line>
+                    <line x1="120" y1="50" x2="120" y2="80" class="wire-line"></line>
+                  </svg>
+                  <figcaption>System overview (simplified).</figcaption>
+                </figure>
+              </aside>
+            </div>
+            <footer class="card-footer">
+              <a class="btn btn-outline" href="#" aria-label="View PDR slides">PDR Slides</a>
+              <a class="btn btn-outline" href="#" aria-label="Download PDR report">PDR Report</a>
+            </footer>
+          </article>
+
+          <!-- CDR -->
+          <article class="project-card" id="cdr" aria-labelledby="cdr-title">
+            <header class="card-header">
+              <h3 id="cdr-title">Critical Design Review (CDR)</h3>
+              <div class="meta">
+                <span class="tag">Schematics</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Validation Plan</span>
+              </div>
+            </header>
+            <div class="card-body">
+              <details class="details" open>
+                <summary>Electrical</summary>
+                <ul class="detail-list">
+                  <li>Power tree, protection, decoupling</li>
+                  <li>MCU/FPGA selection &amp; pin plan</li>
+                  <li>High-speed layout constraints</li>
+                </ul>
+              </details>
+              <details class="details">
+                <summary>Mechanical</summary>
+                <ul class="detail-list">
+                  <li>Stack-up, tolerances, DFMA</li>
+                  <li>Thermal and enclosure decisions</li>
+                  <li>Assembly sequence planning</li>
+                </ul>
+              </details>
+              <details class="details">
+                <summary>Validation</summary>
+                <ul class="detail-list">
+                  <li>Bring-up checklist</li>
+                  <li>Verification test cases &amp; acceptance criteria</li>
+                  <li>Safety and reliability testing</li>
+                </ul>
+              </details>
+            </div>
+            <footer class="card-footer">
+              <a class="btn btn-outline" href="#" aria-label="View CDR package">CDR Package</a>
+            </footer>
+          </article>
+
+          <!-- Final Presentation -->
+          <article class="project-card" id="final-presentation" aria-labelledby="final-title">
+            <header class="card-header">
+              <h3 id="final-title">Final Presentation</h3>
+              <div class="meta">
+                <span class="tag">Results</span>
+                <span class="tag">Demo</span>
+                <span class="tag">Lessons</span>
+              </div>
+            </header>
+            <div class="card-body grid-2">
+              <div>
+                <p>
+                  <!-- TODO: Replace -->
+                  Final system met or exceeded performance targets. Demo showcased end-to-end functionality,
+                  with measured improvements in power efficiency and response time.
+                </p>
+                <ul class="bullets">
+                  <li>Performance summary</li>
+                  <li>Live demo video</li>
+                  <li>Future work</li>
+                </ul>
+              </div>
+              <div class="embed">
+                <div class="video-frame" aria-label="Demo video placeholder" role="img">
+                  <span>Demo Video</span>
+                </div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="btn btn-primary" href="#" aria-label="View final presentation slides">View Slides</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- Mini Fabrication Projects                                        -->
+      <!-- ================================================================ -->
+      <section id="fabrication" class="section" aria-labelledby="fab-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="fab-title">Mini Fabrication Projects</h2>
+            <p class="section-lead">Hands-on projects across digital fabrication and embedded systems.</p>
+          </header>
+
+          <div class="project-grid">
+            <article id="fab-cutting" class="mini-card">
+              <h3>Computer Controlled Cutting</h3>
+              <p>Parametric design cut on laser/CNC for press-fit assembly.</p>
+              <ul class="chips" role="list"><li>Fusion 360</li><li>DXF</li><li>Laser</li><li>CNC</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+
+            <article id="fab-embedded" class="mini-card">
+              <h3>Embedded Programming</h3>
+              <p>Bare-metal drivers for sensor fusion and control loops.</p>
+              <ul class="chips" role="list"><li>C/C++</li><li>RTOS</li><li>SPI/I2C</li><li>Unit Tests</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+
+            <article id="fab-scanning" class="mini-card">
+              <h3>3D Scanning</h3>
+              <p>Photogrammetry + mesh cleanup for reverse engineering.</p>
+              <ul class="chips" role="list"><li>Photogrammetry</li><li>Meshing</li><li>STL</li><li>Remesh</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+
+            <article id="fab-machining" class="mini-card">
+              <h3>Computer-Controlled Machining</h3>
+              <p>3-axis toolpaths for a functional aluminum part.</p>
+              <ul class="chips" role="list"><li>CAM</li><li>Feeds/Speeds</li><li>Al-6061</li><li>Workholding</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+
+            <article id="fab-electronics" class="mini-card">
+              <h3>Electronics Production</h3>
+              <p>SMT reflow, rework, and bring-up of a custom PCB.</p>
+              <ul class="chips" role="list"><li>KiCad</li><li>DFM</li><li>Stencil</li><li>Reflow</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+
+            <article id="fab-molding" class="mini-card">
+              <h3>Molding &amp; Casting</h3>
+              <p>Two-part silicone mold; rigid urethane casting.</p>
+              <ul class="chips" role="list"><li>Silicone</li><li>Urethane</li><li>Degassing</li><li>Release</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+
+            <article id="fab-wildcard" class="mini-card">
+              <h3>Wildcard</h3>
+              <p>Choose-your-own: advanced process or unique prototype.</p>
+              <ul class="chips" role="list"><li>Experiment</li><li>R&amp;D</li><li>Optimization</li><li>Report</li></ul>
+              <a class="mini-link" href="#">View build</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- About                                                            -->
+      <!-- ================================================================ -->
+      <section id="about" class="section" aria-labelledby="about-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="about-title">About Me</h2>
+            <p class="section-lead">Senior engineering student at Belen Jesuit Highschool.</p>
+          </header>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <h3>Profile</h3>
+              <p>Highschool student in class of 2026</p>
+              <ul class="bullets">
+                <li>Taken 4 years of engineering-based classes</li>
+                <li>Active member of volleyball, track/field, and bowling teams</li>
+                <li>add more here</li>
+              </ul>
+            </div>
+
+            <div class="about-card">
+  <h3>Technical Skills</h3>
+  <ul class="skills" role="list">
+    <li>CAD: <strong>Fusion 360</strong>, <strong>Onshape</strong></li>
+    <li>Electrical: <strong>soldering</strong> &amp; <strong>wire splicing</strong> (incl. automotive harness work)</li>
+    <li>Automotive: experienced in <strong>repair</strong> &amp; <strong>modifications</strong></li>
+    <li>Specialty: <strong>car audio</strong> system design, installation &amp; <strong>fabrication</strong> (enclosures, deadening, tuning)</li>
+  </ul>
+</div>
+
+            <div class="about-card">
+              <h3>Experience</h3>
+              <ol class="timeline">
+                <li>
+                  <div class="time">2024–2025</div>
+                  <div class="desc">Capstone project lead — system architecture and validation.</div>
+                </li>
+                <li>
+                  <div class="time">2023</div>
+                  <div class="desc">Intern — prototyped embedded sensing platform.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- Contact                                                          -->
+      <!-- ================================================================ -->
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="contact-title">Contact Me</h2>
+            <p class="section-lead">Let’s work together — I’m open to internships and full-time roles.</p>
+          </header>
+
+          <form class="contact-form" action="#" method="post" novalidate aria-describedby="contact-help">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <p id="contact-help" class="form-help">
+              I’ll get back to you within 2–3 business days. Fields marked required must be completed.
+            </p>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Send</button>
+              <button class="btn btn-ghost" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================================================== -->
+    <!-- Footer                                                             -->
+    <!-- ================================================================== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <nav aria-label="Footer">
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#senior-project">Senior Design</a></li>
+            <li><a href="#fabrication">Fabrication</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <p class="copyright">© <span id="year"></span> Your Name. All rights reserved.</p>
       </div>
-    </div>
-  </section>
+      <a class="back-to-top" href="#home" aria-label="Back to top">↑</a>
+    </footer>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section alt-bg">
-    <div class="container contact-grid">
-      <div>
-        <h2 class="section-title">Get In Touch</h2>
-        <p>If you’d like to collaborate or have any questions, feel free to reach out!</p>
-        <ul class="contact-info">
-          <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
-          <li>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></li>
-          <li>GitHub: <a href="#">github.com/yourhandle</a></li>
-        </ul>
-      </div>
-      <form class="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
-    </div>
-  </section>
+    <!-- ================================================================== -->
+    <!-- Minimal JS                                                         -->
+    <!-- ================================================================== -->
+    <script>
+      // -----------------------
+      // Mobile nav toggle
+      // -----------------------
+      const navToggle = document.getElementById('navToggle');
+      const siteNav = document.getElementById('siteNav');
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© <span id="year"></span> Your Name. All rights reserved.</p>
-  </footer>
+      navToggle?.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        siteNav.classList.toggle('open');
+      });
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+      // -----------------------
+      // Submenu expand/collapse
+      // - FIX: clicking again now closes it
+      // - Syncs aria-expanded on button and aria-hidden on menu
+      // -----------------------
+      document.querySelectorAll('.sub-trigger').forEach((btn) => {
+        const menu = btn.nextElementSibling;
+        btn.addEventListener('click', () => {
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!isOpen));
+          menu.classList.toggle('open', !isOpen);
+          menu.setAttribute('aria-hidden', String(isOpen));
+        });
+      });
+
+      // Close submenu when clicking outside
+      document.addEventListener('click', (e) => {
+        document.querySelectorAll('.has-sub').forEach((wrapper) => {
+          if (!wrapper.contains(e.target)) {
+            const trigger = wrapper.querySelector('.sub-trigger');
+            const menu = wrapper.querySelector('.sub-menu');
+            if (trigger && menu) {
+              trigger.setAttribute('aria-expanded', 'false');
+              menu.classList.remove('open');
+              menu.setAttribute('aria-hidden', 'true');
+            }
+          }
+        });
+      });
+
+      // ESC closes any open submenu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.has-sub .sub-trigger').forEach((trigger) => {
+            const menu = trigger.nextElementSibling;
+            trigger.setAttribute('aria-expanded', 'false');
+            menu?.classList.remove('open');
+            menu?.setAttribute('aria-hidden', 'true');
+          });
+        }
+      });
+
+      // -----------------------
+      // Theme toggle (light/dark/auto)
+      // -----------------------
+      const themeBtn = document.getElementById('themeToggle');
+      const STORAGE_KEY = 'pref-theme';
+
+      const applyTheme = (mode) => {
+        document.body.dataset.theme = mode;
+        try { localStorage.setItem(STORAGE_KEY, mode); } catch {}
+      };
+
+      const initTheme = () => {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) applyTheme(saved);
+        } catch {}
+      };
+
+      themeBtn?.addEventListener('click', () => {
+        const current = document.body.dataset.theme || 'auto';
+        const next = current === 'dark' ? 'light' : current === 'light' ? 'auto' : 'dark';
+        applyTheme(next);
+      });
+
+      initTheme();
+
+      // -----------------------
+      // Current year
+      // -----------------------
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // -----------------------
+      // Respect reduced motion
+      // -----------------------
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-animate]').forEach((el) => el.removeAttribute('data-animate'));
+      }
+    </script>
+  </body>
 </html>
