@@ -101,12 +101,16 @@
             <li><strong>Values:</strong> reliability, clarity, iteration speed</li>
           </ul>
         </div>
-        <div class="hero-media">
-          <figure class="portrait">
-            <img src="download.jpg" alt="Portrit of Michael Pena" />
-            <figcaption>Hi — I’m an engineer who engineers.</figcaption>
-          </figure>
-        </div>
+        <div class="hero-image-container">
+  <picture class="hero-photo">
+    <!-- Dark mode image -->
+    <source media="(prefers-color-scheme: dark)" srcset="profile-dark.png" />
+    <!-- Light mode image -->
+    <source media="(prefers-color-scheme: light)" srcset="profile-light.png" />
+    <!-- Fallback -->
+    <img src="profile-light.jpg" alt="Profile picture" class="hero-image" />
+  </picture>
+</div>
       </div>
     </section>
 
@@ -137,13 +141,12 @@
             <div class="card-body">
               <p>
                 <!-- TODO: Replace with your real text -->
-                The system must <em>reliably</em> perform X under constraints Y and Z. Stakeholders require
-                measurable improvements in A (≥ 20%) while maintaining B and C within defined limits.
+               Today, the global population faces the urgent problem that our reliance on fossil fuels continues to damage the environment worldwide, and without adopting cleaner alternatives soon, the future will see worsening climate change, making electrolysis-harvested hydrogen a critical solution for sustainable energy.
               </p>
               <ul class="detail-list">
-                <li><strong>Users:</strong> …</li>
-                <li><strong>Environment:</strong> …</li>
-                <li><strong>Key metrics:</strong> latency, power draw, unit cost, MTBF</li>
+                <li><strong>Safety Procedures:</strong> Mandatory ventilation fan, safety goggles, and heat-resistant gloves. A kill switch is also required on the generator </li>
+                <li><strong>Solution:</strong> Our team plans on harnessing the thermal energy from the hydrogen and oxygen in water. These gases will be separated using electrolysis and burnt for energy. </li>
+                <li><strong>Important materials:</strong> 316 stainless steel, 48v power supply, sodium hydroxide</li>
               </ul>
             </div>
             <footer class="card-footer">
