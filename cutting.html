@@ -1,1 +1,359 @@
-hi guys
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <title>Logo Design Process — Michael Pena — Engineering Portfolio</title>
+  <meta name="description" content="Step-by-step documentation for the Oxy-Hydrogen Generator logo design: brief, sketches, vectorization, iterations, color, typography, spacing, and export specs." />
+
+  <!-- Minimal, self-contained styling; remove if you merge into your main stylesheet -->
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --card: #12141a;
+      --text: #e9eef5;
+      --muted: #a9b4c1;
+      --brand: #34d399; /* emerald-ish accent */
+      --border: #222633;
+      --code: #0e1116;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #ffffff;
+        --card: #f7f9fb;
+        --text: #0b1220;
+        --muted: #4b5563;
+        --brand: #0ea5e9; /* sky accent in light */
+        --border: #e5e7eb;
+        --code: #f3f4f6;
+      }
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(52,211,153,.12), transparent 60%) no-repeat, var(--bg);
+    }
+    a { color: var(--brand); text-decoration: none }
+    a:hover { text-decoration: underline }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(150%) blur(8px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 18px 20px }
+    .crumbs { font-size: .92rem; color: var(--muted) }
+    .crumbs a { color: inherit }
+    h1 {
+      margin: 10px 0 6px;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      letter-spacing: .3px;
+    }
+    .lede { color: var(--muted); margin: 0 0 16px }
+    main { padding: 24px 20px 80px }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 880px) {
+      .grid { grid-template-columns: 2.1fr 1fr }
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    section h2 {
+      margin-top: 0;
+      font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px; font-size: .95rem; color: var(--muted)
+    }
+    .badge {
+      display: inline-block; padding: 4px 10px; border-radius: 999px;
+      background: color-mix(in srgb, var(--brand) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--brand) 38%, transparent);
+      color: var(--brand); font-weight: 600; font-size: .82rem; letter-spacing:.2px
+    }
+    figure { margin: 0 }
+    figcaption { font-size: .9rem; color: var(--muted); margin-top: 8px }
+    .gallery {
+      display: grid; gap: 10px; grid-template-columns: repeat(2,1fr);
+    }
+    @media (min-width:700px){ .gallery { grid-template-columns: repeat(4,1fr) } }
+    .gallery img, .hero img, .wide img {
+      width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border);
+      background: #0a0c10
+    }
+    .hero { margin-bottom: 18px }
+    .callout {
+      border-left: 3px solid var(--brand);
+      padding: 8px 12px; background: color-mix(in srgb, var(--brand) 8%, transparent);
+      border-radius: 8px; margin: 8px 0 0; color: var(--muted); font-size: .95rem
+    }
+    details {
+      border: 1px dashed var(--border);
+      border-radius: 12px; padding: 12px 12px;
+      background: color-mix(in srgb, var(--card) 86%, transparent);
+    }
+    details + details { margin-top: 10px }
+    summary { cursor: pointer; font-weight: 600 }
+    kbd { background: var(--code); border: 1px solid var(--border); border-bottom-color: #0002; padding: 2px 6px; border-radius: 6px; font-size: .9rem }
+    .btnrow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px;
+      border: 1px solid var(--border); border-radius: 12px; background: linear-gradient(180deg, color-mix(in srgb, var(--card) 90%, transparent), color-mix(in srgb, var(--card) 75%, transparent));
+      color: var(--text); text-decoration: none; font-weight: 600;
+    }
+    .btn:hover { border-color: color-mix(in srgb, var(--brand) 38%, var(--border)) }
+    .specs {
+      display: grid; gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    }
+    .swatch {
+      display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: center;
+      border: 1px solid var(--border); border-radius: 12px; padding: 8px; background: color-mix(in srgb, var(--card) 95%, transparent);
+    }
+    .chip { width: 48px; height: 48px; border-radius: 10px; border: 1px solid var(--border) }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .92rem }
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="Page header">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/index.html">Home</a> › <a href="/projects.html">Projects</a> › <span>Logo Design Process</span>
+      </nav>
+      <h1>Oxy-Hydrogen Generator — Logo Design Process</h1>
+      <p class="lede">A step-by-step build log from concept to export-ready assets.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- Left column: narrative -->
+      <div>
+        <section aria-labelledby="brief">
+          <h2 id="brief">Project Brief</h2>
+          <p><span class="badge">Goal</span> Create a modern, engineering-forward logo for an oxy-hydrogen (HHO) generator company, optimized for laser-etching, 3D printing, and small UI sizes.</p>
+          <div class="meta" role="list">
+            <div role="listitem"><strong>Deliverables:</strong> SVG, PDF, PNG (1x/2x/4x), favicon + app icons</div>
+            <div role="listitem"><strong>Constraints:</strong> 1-color friendly, high contrast, clean geometry, no tiny interior gaps</div>
+          </div>
+          <div class="callout">Concept keywords: hydrogen, spark/arc, molecule lattice, water → gas, efficiency, safety.</div>
+        </section>
+
+        <section aria-labelledby="research">
+          <h2 id="research">Research & Moodboard</h2>
+          <figure class="gallery" aria-label="Reference grid">
+            <!-- Replace with your images -->
+            <img src="cutting/affinity.png" alt="Arc welding symbol close-up" />
+            <img src="cutting/colors.jpg" alt="Hexagonal molecule lattice pattern" />
+            <img src="/assets/logo/process/mood-03.jpg" alt="Water droplet stylization studies" />
+            <img src="/assets/logo/process/mood-04.jpg" alt="Electrolysis schematic excerpt" />
+          </figure>
+          <figcaption>The logo was designed and layered in affinity. The vinyl colors were then chosen and put into the cricut cutter. </figcaption>
+        </section>
+
+        <section aria-labelledby="sketches">
+          <h2 id="sketches">Sketches → Direction</h2>
+          <div class="hero">
+            <img src="/assets/logo/process/sketches-sheet.jpg" alt="Sheet of pencil sketches exploring arcs, droplets, and hexagonal frames" />
+          </div>
+          <p>Three directions emerged: (A) Droplet + bolt, (B) Hex-cell with H-nodes, (C) Interlocking O-H ring. Direction <strong>B</strong> won for manufacturability and brand distinctiveness.</p>
+        </section>
+
+        <section aria-labelledby="vector">
+          <h2 id="vector">Vector Build</h2>
+          <figure class="wide">
+            <img src="/assets/logo/process/grid-build.svg" alt="Vector grid construction of the hexagonal H-node mark" />
+          </figure>
+          <ul>
+            <li>Built on a 12-pt grid with 60° increments; outer hex set by circumscribed circle diameter 180.</li>
+            <li>Node circles sized to survive laser-etch at 8px; minimum stroke 1.25px @ 24px icon.</li>
+            <li>All joins expanded + boolean-united for clean single path exports.</li>
+          </ul>
+          <details>
+            <summary>Path hygiene (click to expand)</summary>
+            <p>Removed overlaps, rounded joins to 8px radius equivalents, normalized winding rules. Verified with outline mode and SVGOMG cleanup.</p>
+          </details>
+        </section>
+
+        <section aria-labelledby="iterations">
+          <h2 id="iterations">Iterations & Feedback</h2>
+          <details open>
+            <summary>v0.2 — Node size too small</summary>
+            <p>At favicon sizes nodes collapsed. Increased node diameter by 18% and thickened connectors by 0.25pt.</p>
+          </details>
+          <details>
+            <summary>v0.6 — Droplet countershape</summary>
+            <p>Introduced negative-space droplet in the center; improved category signaling without adding complexity.</p>
+          </details>
+          <details>
+            <summary>v0.9 — Final geometry lock</summary>
+            <p>Set final proportions; converted strokes to outlines; merged paths for single-color engraving.</p>
+          </details>
+        </section>
+
+        <section aria-labelledby="exports">
+          <h2 id="exports">Exports & File Organization</h2>
+          <div class="specs">
+            <div>
+              <h3>Vector</h3>
+              <ul class="mono">
+                <li>/brand/logo/primary.svg</li>
+                <li>/brand/logo/mono-black.svg</li>
+                <li>/brand/logo/mono-white.svg</li>
+                <li>/brand/logo/print.pdf (CMYK)</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Raster</h3>
+              <ul class="mono">
+                <li>/brand/logo/png/primary-512.png</li>
+                <li>/brand/logo/png/primary-1024.png</li>
+                <li>/brand/logo/png/primary-2048.png</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Icons</h3>
+              <ul class="mono">
+                <li>/brand/icons/favicon.svg</li>
+                <li>/brand/icons/favicon-32.png</li>
+                <li>/brand/icons/apple-touch-icon.png</li>
+                <li>/brand/icons/site.webmanifest</li>
+              </ul>
+            </div>
+          </div>
+          <div class="btnrow" role="group" aria-label="Downloads">
+            <!-- Update these links to your real files -->
+            <a class="btn" href="/brand/logo/primary.svg" download>Download SVG</a>
+            <a class="btn" href="/brand/logo/primary-1024.png" download>Download PNG</a>
+            <a class="btn" href="/brand/logo/print.pdf" download>Print PDF</a>
+            <a class="btn" href="/brand/icons/site.webmanifest">Web Manifest</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column: specs & identity -->
+      <aside aria-label="Brand specs and quick info">
+        <section aria-labelledby="identity">
+          <h2 id="identity">Company Logo</h2>
+          <figure class="hero">
+            <img src="cutting/logo.png" alt="Final logo lockup on dark background" />
+          </figure>
+          <div class="meta" style="margin-top:8px">
+        </section>
+
+        <section aria-labelledby="color">
+          <h2 id="color">Color Palette</h2>
+          <div class="swatch">
+            <span class="chip" style="background:#2356A1"></span>
+            <div><strong>Blue</strong><br><span class="mono">#2356A1 </span></div>
+          </div>
+          <div class="swatch">
+            <span class="chip" style="background:#D13B34"></span>
+            <div><strong>Red</strong><br><span class="mono">#D13B34</span></div>
+          </div>
+          <div class="swatch">
+            <span class="chip" style="background:#9E1C1C"></span>
+            <div><strong>Dark Red</strong><br><span class="mono">#9E1C1C</span></div>
+          </div>
+          <div class="swatch">
+            <span class="chip" style="background:#D9D9D9"></span>
+            <div><strong>Gray</strong><br><span class="mono">#D9D9D9</span></div>
+          </div>
+            <div class="swatch">
+            <span class="chip" style="background:#F9A51A"></span>
+            <div><strong>Steel</strong><br><span class="mono">#F9A51A</span></div>  
+          </div>
+            <div class="swatch">
+            <span class="chip" style="background:#FFCC33"></span>
+            <div><strong>Steel</strong><br><span class="mono">#FFCC33</span></div> 
+          </div>
+            <div class="swatch">
+            <span class="chip" style="background:#FFFFFF"></span>
+            <div><strong>Steel</strong><br><span class="mono">#FFFFFF   </span></div> 
+          </div>
+          <p class="callout">For print: convert spot to Pantone Bridge nearest; for CMYK start with C70 M0 Y40 K0 and adjust by proof.</p>
+        </section>
+
+        <section aria-labelledby="type">
+          <h2 id="type">Typography</h2>
+          <ul>
+            <li><strong>Wordmark:</strong> Inter / Satoshi / SF Pro (SemiBold)</li>
+            <li><strong>UI:</strong> System stack for performance</li>
+            <li><strong>Spacing:</strong> Optical kerning; tracking −1% at display sizes</li>
+          </ul>
+          <p class="callout">When paired with the mark, maintain a 1x cap-height gap between symbol and type.</p>
+        </section>
+
+        <section aria-labelledby="spacing">
+          <h2 id="spacing">Clear Space & Minimums</h2>
+          <figure>
+            <img src="/assets/logo/process/clearspace.svg" alt="Clear-space diagram showing 1x node diameter padding around the mark" />
+          </figure>
+          <ul>
+            <li><strong>Clear space:</strong> 1× node diameter on all sides</li>
+            <li><strong>Min size (screen):</strong> 20px height (mono), 28px (full color)</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="howto">
+          <h2 id="howto">How to Recreate (Quick)</h2>
+          <ol>
+            <li>Set a 12-pt isometric grid (60°) in your vector app.</li>
+            <li>Draw outer hex; place six nodes on vertices.</li>
+            <li>Connect nodes with rounded joins; create central negative droplet.</li>
+            <li>Expand strokes, unite paths, remove overlaps.</li>
+            <li>Export SVG (responsive), plus PNGs at 1×/2×/4×.</li>
+          </ol>
+          <p>Apps used: Figma and Illustrator. Shortcuts: <kbd>Ctrl/Cmd</kbd> + <kbd>'</kbd> (grid), <kbd>Shift</kbd> + drag (constrain angles).</p>
+        </section>
+
+        <section aria-labelledby="changelog">
+          <h2 id="changelog">Changelog</h2>
+          <ul class="mono">
+            <li>2025-09-08 — Geometry lock, export set finalized</li>
+            <li>2025-09-06 — Color & mono variants approved</li>
+            <li>2025-09-05 — Direction B chosen after sketches</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap" style="padding:22px 20px">
+      © <span id="y"></span> Michael Pena. <a href="/index.html">Back to portfolio</a>.
+    </div>
+  </footer>
+
+  <script>
+    // year stamp
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // optional: protect right-click on brand images (comment out if not desired)
+    document.addEventListener('contextmenu', (e) => {
+      const t = e.target;
+      if (t.tagName === 'IMG' && t.closest('main')) {
+        // e.preventDefault(); // uncomment to disable context menu on images
+      }
+    });
+  </script>
+</body>
+</html>
